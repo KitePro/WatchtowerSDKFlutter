@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:watchtower_sdk/watchtower_sdk.dart';
 
 import 'package:watchtower_sdk_app/app_data_widget.dart';
+import 'package:watchtower_sdk_app/other.dart';
 import 'package:watchtower_sdk_app/sdk_actions_widget.dart';
 import 'package:watchtower_sdk_app/user_data.dart';
 import 'package:watchtower_sdk_app/uri_events_widget.dart';
@@ -16,6 +17,7 @@ import 'dart:typed_data';
 Logger logger = Watchtower.getWatchtoweLogger("main");
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -79,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const Other(),
               const SDKActionsWidget(),
               AppDataWidget(),
               UserData(),
@@ -90,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.blueAccent),
                   ),
-                  child: screenShot != null ? Image.memory(screenShot!) : Container())
+                  child: screenShot != null
+                      ? Image.memory(screenShot!)
+                      : Container())
             ],
           ),
         ),
@@ -102,7 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: const Text("User info"),
-                      content: Text("User ID: ${Watchtower.userAppData.userId}"),
+                      content:
+                          Text("User ID: ${Watchtower.userAppData.userId}"),
                     );
                   });
             }),
