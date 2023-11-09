@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appId: appId,
       appKey: appKey,
       repaintBoundary: repaintBoundary,
-      enableSessionRecorder: false,
+      enableSessionRecorder: true,
     );
   }
 

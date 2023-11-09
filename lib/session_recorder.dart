@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 
@@ -11,7 +12,6 @@ import 'package:watchtower_sdk/src/watchtower_api.dart';
 
 // Project imports:
 import 'package:watchtower_sdk/watchtower_logger.dart';
-import 'package:watchtower_sdk/watchtower_sdk.dart';
 
 var logger = getLogger("session_recorder");
 
@@ -47,21 +47,43 @@ class SessionRecorder {
   }
 
   Future<void> runScreenShotsLoop({required int interval}) async {
-    while (true) {
-      await Future.delayed(Duration(milliseconds: interval));
-      Uint8List? frame = await takeScreenShot(repaintBoundary: repaintBoundary);
-
-      if (isSendToWatchtowerEnabled) {
-        // Send frame to GRPC stream
-        screenshotStreamController.add(frame);
-      } else {
-        if (!screenshotStreamController.isClosed) {
-          logger.w("Close screenshot stream controller");
-          screenshotStreamController.close();
-          screenshotStreamController = StreamController<Uint8List?>();
+    if (Platform.isIOS) {
+      final wt = WTPigeonHost();
+      while (true) {
+        final frame = await wt.takeScreenshot();
+        if (isSendToWatchtowerEnabled) {
+          // Send frame to GRPC stream
+          screenshotStreamController.add(frame);
+        } else {
+          if (!screenshotStreamController.isClosed) {
+            logger.w("Close screenshot stream controller");
+            screenshotStreamController.close();
+            screenshotStreamController = StreamController<Uint8List?>();
+          }
+          // Send frame to Local store stream
+          screenshotLocalStoreStreamController.add(frame);
         }
-        // Send frame to Local store stream
-        screenshotLocalStoreStreamController.add(frame);
+
+        await Future.delayed(Duration(milliseconds: interval));
+      }
+    } else {
+      while (true) {
+        await Future.delayed(Duration(milliseconds: interval));
+        Uint8List? frame =
+            await takeScreenShot(repaintBoundary: repaintBoundary);
+
+        if (isSendToWatchtowerEnabled) {
+          // Send frame to GRPC stream
+          screenshotStreamController.add(frame);
+        } else {
+          if (!screenshotStreamController.isClosed) {
+            logger.w("Close screenshot stream controller");
+            screenshotStreamController.close();
+            screenshotStreamController = StreamController<Uint8List?>();
+          }
+          // Send frame to Local store stream
+          screenshotLocalStoreStreamController.add(frame);
+        }
       }
     }
   }
@@ -82,12 +104,6 @@ class SessionRecorder {
     var image = await boundary.toImage(pixelRatio: _instance.pixelRatio);
     var byteData = await image.toByteData(format: ImageByteFormat.png);
     var pngBytes = byteData!.buffer.asUint8List();
-    print(pngBytes);
     return (pngBytes);
-  }
-
-  static void takeScreenShotDemo() async {
-    final wt = WTPigeon();
-    wt.sendTest("arg_message");
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:watchtower_sdk/watchtower_sdk.dart';
 import 'package:watchtower_sdk_app/k_webview.dart';
 
 class Other extends StatelessWidget {
@@ -47,15 +46,6 @@ class Other extends StatelessWidget {
                         );
                       },
                       child: const Text("Open web view"),
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.blue,
-                      ),
-                      onPressed: () async {
-                        Watchtower.takeScreenShot();
-                      },
-                      child: const Text("Take Screenshot"),
                     ),
                   ],
                 ),

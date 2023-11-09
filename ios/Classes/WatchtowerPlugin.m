@@ -9,7 +9,8 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar
 {
-    SetUpWTPigeon(registrar.messenger, [[WTImplementation alloc] init]);
+    SetUpWTPigeonHost(registrar.messenger,  [[WTImplementation alloc] init]);
 }
+
 
 @end

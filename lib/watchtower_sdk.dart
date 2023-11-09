@@ -25,8 +25,6 @@ import 'package:watchtower_sdk/watchtower_proto/proto/events_payload.pb.dart';
 import 'package:watchtower_sdk/watchtower_proto/proto/server.pbgrpc.dart';
 import 'package:watchtower_sdk/watchtower_proto/proto/session_frame.pb.dart';
 
-import 'src/watchtower_api.dart';
-
 var logger = getLogger("watchtower_sdk");
 
 final inmemoryEventStore = [];
@@ -414,8 +412,7 @@ class Watchtower {
         return LogPayload_LOG_LEVEL.UNKNOWN;
     }
   }
-
-  static void takeScreenShot() {
-    SessionRecorder.takeScreenShotDemo();
-  }
+  
 }
+
+

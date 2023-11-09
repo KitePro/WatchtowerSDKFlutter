@@ -11,13 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-/// The codec used by WTPigeon.
-NSObject<FlutterMessageCodec> *WTPigeonGetCodec(void);
+/// The codec used by WTPigeonHost.
+NSObject<FlutterMessageCodec> *WTPigeonHostGetCodec(void);
 
-@protocol WTPigeon
-- (void)sendTest:(NSString *)message error:(FlutterError *_Nullable *_Nonnull)error;
+@protocol WTPigeonHost
+/// @return `nil` only when `error != nil`.
+- (nullable FlutterStandardTypedData *)takeScreenshot:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
-extern void SetUpWTPigeon(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeon> *_Nullable api);
+extern void SetUpWTPigeonHost(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeonHost> *_Nullable api);
 
 NS_ASSUME_NONNULL_END

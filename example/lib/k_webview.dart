@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:watchtower_sdk/watchtower_sdk.dart';
 
 class KWebView extends StatefulWidget {
   const KWebView({super.key});
@@ -17,14 +16,6 @@ class _KWebViewState extends State<KWebView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Watchtower.takeScreenShot();
-            },
-            child: Text("Скриншот"),
-          )
-        ],
       ),
       body: SafeArea(
         bottom: false,

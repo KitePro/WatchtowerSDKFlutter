@@ -26,27 +26,25 @@ static id GetNullableObjectAtIndex(NSArray *array, NSInteger key) {
   return (result == [NSNull null]) ? nil : result;
 }
 
-NSObject<FlutterMessageCodec> *WTPigeonGetCodec(void) {
+NSObject<FlutterMessageCodec> *WTPigeonHostGetCodec(void) {
   static FlutterStandardMessageCodec *sSharedObject = nil;
   sSharedObject = [FlutterStandardMessageCodec sharedInstance];
   return sSharedObject;
 }
 
-void SetUpWTPigeon(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeon> *api) {
+void SetUpWTPigeonHost(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeonHost> *api) {
   {
     FlutterBasicMessageChannel *channel =
       [[FlutterBasicMessageChannel alloc]
-        initWithName:@"dev.flutter.pigeon.com.watchtower.plugin.WTPigeon.sendTest"
+        initWithName:@"dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.takeScreenshot"
         binaryMessenger:binaryMessenger
-        codec:WTPigeonGetCodec()];
+        codec:WTPigeonHostGetCodec()];
     if (api) {
-      NSCAssert([api respondsToSelector:@selector(sendTest:error:)], @"WTPigeon api (%@) doesn't respond to @selector(sendTest:error:)", api);
+      NSCAssert([api respondsToSelector:@selector(takeScreenshot:)], @"WTPigeonHost api (%@) doesn't respond to @selector(takeScreenshot:)", api);
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
-        NSArray *args = message;
-        NSString *arg_message = GetNullableObjectAtIndex(args, 0);
         FlutterError *error;
-        [api sendTest:arg_message error:&error];
-        callback(wrapResult(nil, error));
+        FlutterStandardTypedData *output = [api takeScreenshot:&error];
+        callback(wrapResult(output, error));
       }];
     } else {
       [channel setMessageHandler:nil];

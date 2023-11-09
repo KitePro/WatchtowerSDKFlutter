@@ -17,22 +17,22 @@ List<Object?> wrapResponse({Object? result, PlatformException? error, bool empty
   return <Object?>[error.code, error.message, error.details];
 }
 
-class WTPigeon {
-  /// Constructor for [WTPigeon].  The [binaryMessenger] named argument is
+class WTPigeonHost {
+  /// Constructor for [WTPigeonHost].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  WTPigeon({BinaryMessenger? binaryMessenger})
+  WTPigeonHost({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> sendTest(String arg_message) async {
+  Future<Uint8List> takeScreenshot() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.com.watchtower.plugin.WTPigeon.sendTest', codec,
+        'dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.takeScreenshot', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_message]) as List<Object?>?;
+        await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -44,8 +44,13 @@ class WTPigeon {
         message: replyList[1] as String?,
         details: replyList[2],
       );
+    } else if (replyList[0] == null) {
+      throw PlatformException(
+        code: 'null-error',
+        message: 'Host platform returned null value for non-null return value.',
+      );
     } else {
-      return;
+      return (replyList[0] as Uint8List?)!;
     }
   }
 }

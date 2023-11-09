@@ -7,7 +7,7 @@ import 'package:pigeon/pigeon.dart';
   dartPackageName: 'com.watchtower.plugin',
 ))
 @HostApi()
-abstract class WTPigeon {
-  @ObjCSelector("sendTest:")
-  void sendTest(String message);
+abstract class WTPigeonHost {
+  @ObjCSelector('takeScreenshot')
+  Uint8List takeScreenshot();
 }
