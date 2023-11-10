@@ -1,5 +1,5 @@
 #import "WTPigeon.h"
 
 @interface WTImplementation : NSObject<WTPigeonHost>
-- (nullable FlutterStandardTypedData *)takeScreenshot:(FlutterError *_Nullable *_Nonnull)error;
+- (void)startRecorder:(NSInteger)interval error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error;
 @end

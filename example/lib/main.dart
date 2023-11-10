@@ -17,7 +17,6 @@ import 'dart:typed_data';
 Logger logger = Watchtower.getWatchtoweLogger("main");
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Watchtower Demo',
-      theme: ThemeData(
+    theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),

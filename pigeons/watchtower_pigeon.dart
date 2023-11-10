@@ -8,6 +8,12 @@ import 'package:pigeon/pigeon.dart';
 ))
 @HostApi()
 abstract class WTPigeonHost {
-  @ObjCSelector('takeScreenshot')
-  Uint8List takeScreenshot();
+  @ObjCSelector('startRecorder:')
+  void startRecorder(int interval);
+}
+
+@FlutterApi()
+abstract class WTPigeonFlutter {
+  @ObjCSelector('takeScreenshot:')
+  void takeScreenshot(Uint8List frame);
 }

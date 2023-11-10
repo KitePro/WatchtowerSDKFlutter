@@ -15,10 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 NSObject<FlutterMessageCodec> *WTPigeonHostGetCodec(void);
 
 @protocol WTPigeonHost
-/// @return `nil` only when `error != nil`.
-- (nullable FlutterStandardTypedData *)takeScreenshot:(FlutterError *_Nullable *_Nonnull)error;
+- (void)startRecorder:(NSInteger)interval error:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
 extern void SetUpWTPigeonHost(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeonHost> *_Nullable api);
+
+/// The codec used by WTPigeonFlutter.
+NSObject<FlutterMessageCodec> *WTPigeonFlutterGetCodec(void);
+
+@interface WTPigeonFlutter : NSObject
+- (instancetype)initWithBinaryMessenger:(id<FlutterBinaryMessenger>)binaryMessenger;
+- (void)takeScreenshot:(FlutterStandardTypedData *)frame completion:(void (^)(FlutterError *_Nullable))completion;
+@end
 
 NS_ASSUME_NONNULL_END

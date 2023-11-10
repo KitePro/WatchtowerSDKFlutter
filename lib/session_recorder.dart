@@ -27,18 +27,18 @@ class SessionRecorder {
   late final int interval;
   late final String sessionId;
 
-  StreamController<Uint8List?> screenshotStreamController =
+  static StreamController<Uint8List?> screenshotStreamController =
       StreamController<Uint8List?>();
-  final StreamController<Uint8List?> screenshotLocalStoreStreamController =
-      StreamController<Uint8List?>();
+  static final StreamController<Uint8List?>
+      screenshotLocalStoreStreamController = StreamController<Uint8List?>();
 
-  bool isSendToWatchtowerEnabled = true;
+  static bool isSendToWatchtowerEnabled = true;
 
   void init(
       {required String sessionId,
       required GlobalKey repaintBoundary,
       double pixelRatio = 1.0,
-      int interval = 100}) {
+      int interval = 300}) {
     _instance.repaintBoundary = repaintBoundary;
     _instance.pixelRatio = pixelRatio;
     _instance.interval = interval;
@@ -48,24 +48,10 @@ class SessionRecorder {
 
   Future<void> runScreenShotsLoop({required int interval}) async {
     if (Platform.isIOS) {
+      final wtFlutter = WTFlutter();
+      WTPigeonFlutter.setup(wtFlutter);
       final wt = WTPigeonHost();
-      while (true) {
-        final frame = await wt.takeScreenshot();
-        if (isSendToWatchtowerEnabled) {
-          // Send frame to GRPC stream
-          screenshotStreamController.add(frame);
-        } else {
-          if (!screenshotStreamController.isClosed) {
-            logger.w("Close screenshot stream controller");
-            screenshotStreamController.close();
-            screenshotStreamController = StreamController<Uint8List?>();
-          }
-          // Send frame to Local store stream
-          screenshotLocalStoreStreamController.add(frame);
-        }
-
-        await Future.delayed(Duration(milliseconds: interval));
-      }
+      wt.startRecorder(interval);
     } else {
       while (true) {
         await Future.delayed(Duration(milliseconds: interval));
@@ -105,5 +91,24 @@ class SessionRecorder {
     var byteData = await image.toByteData(format: ImageByteFormat.png);
     var pngBytes = byteData!.buffer.asUint8List();
     return (pngBytes);
+  }
+}
+
+class WTFlutter extends WTPigeonFlutter {
+  @override
+  void takeScreenshot(Uint8List frame) {
+    if (SessionRecorder.isSendToWatchtowerEnabled) {
+      // Send frame to GRPC stream
+      SessionRecorder.screenshotStreamController.add(frame);
+    } else {
+      if (!SessionRecorder.screenshotStreamController.isClosed) {
+        logger.w("Close screenshot stream controller");
+        SessionRecorder.screenshotStreamController.close();
+        SessionRecorder.screenshotStreamController =
+            StreamController<Uint8List?>();
+      }
+      // Send frame to Local store stream
+      SessionRecorder.screenshotLocalStoreStreamController.add(frame);
+    }
   }
 }

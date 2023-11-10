@@ -36,18 +36,59 @@ void SetUpWTPigeonHost(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPi
   {
     FlutterBasicMessageChannel *channel =
       [[FlutterBasicMessageChannel alloc]
-        initWithName:@"dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.takeScreenshot"
+        initWithName:@"dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.startRecorder"
         binaryMessenger:binaryMessenger
         codec:WTPigeonHostGetCodec()];
     if (api) {
-      NSCAssert([api respondsToSelector:@selector(takeScreenshot:)], @"WTPigeonHost api (%@) doesn't respond to @selector(takeScreenshot:)", api);
+      NSCAssert([api respondsToSelector:@selector(startRecorder:error:)], @"WTPigeonHost api (%@) doesn't respond to @selector(startRecorder:error:)", api);
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
+        NSArray *args = message;
+        NSInteger arg_interval = [GetNullableObjectAtIndex(args, 0) integerValue];
         FlutterError *error;
-        FlutterStandardTypedData *output = [api takeScreenshot:&error];
-        callback(wrapResult(output, error));
+        [api startRecorder:arg_interval error:&error];
+        callback(wrapResult(nil, error));
       }];
     } else {
       [channel setMessageHandler:nil];
     }
   }
 }
+NSObject<FlutterMessageCodec> *WTPigeonFlutterGetCodec(void) {
+  static FlutterStandardMessageCodec *sSharedObject = nil;
+  sSharedObject = [FlutterStandardMessageCodec sharedInstance];
+  return sSharedObject;
+}
+
+@interface WTPigeonFlutter ()
+@property(nonatomic, strong) NSObject<FlutterBinaryMessenger> *binaryMessenger;
+@end
+
+@implementation WTPigeonFlutter
+
+- (instancetype)initWithBinaryMessenger:(NSObject<FlutterBinaryMessenger> *)binaryMessenger {
+  self = [super init];
+  if (self) {
+    _binaryMessenger = binaryMessenger;
+  }
+  return self;
+}
+- (void)takeScreenshot:(FlutterStandardTypedData *)arg_frame completion:(void (^)(FlutterError *_Nullable))completion {
+  FlutterBasicMessageChannel *channel =
+    [FlutterBasicMessageChannel
+      messageChannelWithName:@"dev.flutter.pigeon.com.watchtower.plugin.WTPigeonFlutter.takeScreenshot"
+      binaryMessenger:self.binaryMessenger
+      codec:WTPigeonFlutterGetCodec()];
+  [channel sendMessage:@[arg_frame ?: [NSNull null]] reply:^(NSArray<id> *reply) {
+    if (reply != nil) {
+      if (reply.count > 1) {
+        completion([FlutterError errorWithCode:reply[0] message:reply[1] details:reply[2]]);
+      } else {
+        completion(nil);
+      }
+    } else {
+      completion([FlutterError errorWithCode:@"channel-error" message:@"Unable to establish connection on channel." details:@""]);
+    } 
+  }];
+}
+@end
+

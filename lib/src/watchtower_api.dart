@@ -27,12 +27,12 @@ class WTPigeonHost {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<Uint8List> takeScreenshot() async {
+  Future<void> startRecorder(int arg_interval) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.takeScreenshot', codec,
+        'dev.flutter.pigeon.com.watchtower.plugin.WTPigeonHost.startRecorder', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+        await channel.send(<Object?>[arg_interval]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -44,13 +44,42 @@ class WTPigeonHost {
         message: replyList[1] as String?,
         details: replyList[2],
       );
-    } else if (replyList[0] == null) {
-      throw PlatformException(
-        code: 'null-error',
-        message: 'Host platform returned null value for non-null return value.',
-      );
     } else {
-      return (replyList[0] as Uint8List?)!;
+      return;
+    }
+  }
+}
+
+abstract class WTPigeonFlutter {
+  static const MessageCodec<Object?> codec = StandardMessageCodec();
+
+  void takeScreenshot(Uint8List frame);
+
+  static void setup(WTPigeonFlutter? api, {BinaryMessenger? binaryMessenger}) {
+    {
+      final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+          'dev.flutter.pigeon.com.watchtower.plugin.WTPigeonFlutter.takeScreenshot', codec,
+          binaryMessenger: binaryMessenger);
+      if (api == null) {
+        channel.setMessageHandler(null);
+      } else {
+        channel.setMessageHandler((Object? message) async {
+          assert(message != null,
+          'Argument for dev.flutter.pigeon.com.watchtower.plugin.WTPigeonFlutter.takeScreenshot was null.');
+          final List<Object?> args = (message as List<Object?>?)!;
+          final Uint8List? arg_frame = (args[0] as Uint8List?);
+          assert(arg_frame != null,
+              'Argument for dev.flutter.pigeon.com.watchtower.plugin.WTPigeonFlutter.takeScreenshot was null, expected non-null Uint8List.');
+          try {
+            api.takeScreenshot(arg_frame!);
+            return wrapResponse(empty: true);
+          } on PlatformException catch (e) {
+            return wrapResponse(error: e);
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
+          }
+        });
+      }
     }
   }
 }

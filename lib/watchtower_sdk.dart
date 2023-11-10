@@ -56,7 +56,7 @@ class Watchtower {
     int port = 8008,
     bool enableSessionRecorder = false,
     bool useTls = true,
-    int sessionRecordIntervalInMs = 100,
+    int sessionRecordIntervalInMs = 500,
   }) async {
     validateWatchtowerParams(
         enableSessionRecorder: enableSessionRecorder,
@@ -142,7 +142,7 @@ class Watchtower {
 
     // Subsctibe to a screenshot local store stream to save screenshot if GRPC server unavailable
     logger.d("Enable saving session frames to local store");
-    sessionRecoreder.screenshotLocalStoreStreamController.stream
+    SessionRecorder.screenshotLocalStoreStreamController.stream
         .listen((pngData) {
       DataStore().saveSessionFrame(
           sessionId: sessionId,
@@ -315,12 +315,12 @@ class Watchtower {
   static void _onWatchtowerConnectionStateChanged(bool state) {
     if (isSessionRecorderEnabeled) {
       logger.d("Update session recorder send to watchtower state tp $state");
-      sessionRecoreder.isSendToWatchtowerEnabled = state;
+      SessionRecorder.isSendToWatchtowerEnabled = state;
 
       // If connection to watchtower restore
       if (state == true) {
         logger.d("reassign stream reader");
-        if (!sessionRecoreder.screenshotStreamController.hasListener) {
+        if (!SessionRecorder.screenshotStreamController.hasListener) {
           _startSessionRecordTransmition();
         }
       }
@@ -331,7 +331,7 @@ class Watchtower {
     logger.d("Start session record transmition");
     try {
       watchtowerConnector.stub.postSessionRecord(
-          sessionRecoreder.screenshotStreamController.stream.map(
+          SessionRecorder.screenshotStreamController.stream.map(
               ((Uint8List? pngData) => SessionFrame(
                   appId: appData.appId,
                   appBundle: appData.appBundle,
@@ -412,7 +412,4 @@ class Watchtower {
         return LogPayload_LOG_LEVEL.UNKNOWN;
     }
   }
-  
 }
-
-
