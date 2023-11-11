@@ -124,6 +124,5 @@ String getSessionId() {
 Timestamp currentTimeStamp() {
   var t = Timestamp(
       seconds: fixnum.Int64(DateTime.now().millisecondsSinceEpoch ~/ 1000));
-  logger.d("Current time stamp: $t");
   return t;
 }
