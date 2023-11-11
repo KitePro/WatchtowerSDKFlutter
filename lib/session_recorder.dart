@@ -43,15 +43,15 @@ class SessionRecorder {
     _instance.pixelRatio = pixelRatio;
     _instance.interval = interval;
     _instance.sessionId = sessionId;
-    runScreenShotsLoop(interval: interval);
+    startScreenRecording(interval: interval);
   }
 
-  Future<void> runScreenShotsLoop({required int interval}) async {
+  Future<void> startScreenRecording({required int interval}) async {
     if (Platform.isIOS) {
-      final wtFlutter = WTFlutter();
-      WTPigeonFlutter.setup(wtFlutter);
-      final wt = WTPigeonHost();
-      wt.startRecorder(interval);
+      final screenRecordingListener = ScreenRecorderListener();
+      WatchtowerScreenRecordingFlutterListener.setup(screenRecordingListener);
+      final screenRecorderApi = WatchtowerScreenRecordingApi();
+      screenRecorderApi.startRecorder(interval);
     } else {
       while (true) {
         await Future.delayed(Duration(milliseconds: interval));
@@ -94,7 +94,7 @@ class SessionRecorder {
   }
 }
 
-class WTFlutter extends WTPigeonFlutter {
+class ScreenRecorderListener extends WatchtowerScreenRecordingFlutterListener {
   @override
   void takeScreenshot(Uint8List frame) {
     if (SessionRecorder.isSendToWatchtowerEnabled) {

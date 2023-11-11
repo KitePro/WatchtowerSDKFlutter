@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = 'watchtower_sdk'
-  s.version             = '0.0.1'
+  s.version             = '0.1.0'
   s.summary             = 'iOS SDK of watchtower analytics'
   s.description         = 'watchtower'
   s.homepage            = 'https://watchtower.cyou'

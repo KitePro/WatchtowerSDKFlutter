@@ -1,15 +1,15 @@
 #import "WatchtowerPlugin.h"
-#import "WTImplementation.h"
+#import "WatchtowerSessionRecording.h"
 
-WTPigeonFlutter *wTPigeonFlutter;
+WatchtowerScreenRecordingFlutterListener *screenRecordingFlutterListener;
 
 @implementation WatchtowerPlugin
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar
 {
-    SetUpWTPigeonHost(registrar.messenger,  [[WTImplementation alloc] init]);
+    SetUpWatchtowerScreenRecordingApi(registrar.messenger,  [[WatchtowerSessionRecording alloc] init]);
     
-    wTPigeonFlutter = [[WTPigeonFlutter alloc] initWithBinaryMessenger:registrar.messenger];
+    screenRecordingFlutterListener = [[WatchtowerScreenRecordingFlutterListener alloc] initWithBinaryMessenger:registrar.messenger];
 }
 
 @end

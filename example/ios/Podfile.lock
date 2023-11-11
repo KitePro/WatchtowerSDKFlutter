@@ -21,7 +21,7 @@ PODS:
     - FlutterMacOS
   - url_launcher_ios (0.0.1):
     - Flutter
-  - watchtower_sdk (0.0.1):
+  - watchtower_sdk (0.1.0):
     - Flutter
 
 DEPENDENCIES:
@@ -69,8 +69,8 @@ SPEC CHECKSUMS:
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   shared_preferences_foundation: 986fc17f3d3251412d18b0265f9c64113a8c2472
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
-  watchtower_sdk: 98f1a0687ca60e55541f963df48bfadf4fee1d75
+  watchtower_sdk: e9973b5efe4f44fbd96d4aaa08ff9494b7072b30
 
-PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
+PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 
 COCOAPODS: 1.12.1

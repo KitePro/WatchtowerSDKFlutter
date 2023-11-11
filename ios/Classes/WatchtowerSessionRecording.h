@@ -1,5 +1,5 @@
-#import "WTPigeon.h"
+#import "WatchtowerPigeon.h"
 
-@interface WTImplementation : NSObject<WTPigeonHost>
+@interface WatchtowerSessionRecording : NSObject<WatchtowerScreenRecordingApi>
 - (void)startRecorder:(NSInteger)interval error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error;
 @end

@@ -1,7 +1,7 @@
 #import <Flutter/Flutter.h>
-#import "WTPigeon.h"
+#import "WatchtowerPigeon.h"
 
-extern WTPigeonFlutter *wTPigeonFlutter;
+extern WatchtowerScreenRecordingFlutterListener *screenRecordingFlutterListener;
 
 @interface WatchtowerPlugin : NSObject<FlutterPlugin>
 @end

@@ -11,19 +11,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-/// The codec used by WTPigeonHost.
-NSObject<FlutterMessageCodec> *WTPigeonHostGetCodec(void);
+/// The codec used by WatchtowerScreenRecordingApi.
+NSObject<FlutterMessageCodec> *WatchtowerScreenRecordingApiGetCodec(void);
 
-@protocol WTPigeonHost
+@protocol WatchtowerScreenRecordingApi
 - (void)startRecorder:(NSInteger)interval error:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
-extern void SetUpWTPigeonHost(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WTPigeonHost> *_Nullable api);
+extern void SetUpWatchtowerScreenRecordingApi(id<FlutterBinaryMessenger> binaryMessenger, NSObject<WatchtowerScreenRecordingApi> *_Nullable api);
 
-/// The codec used by WTPigeonFlutter.
-NSObject<FlutterMessageCodec> *WTPigeonFlutterGetCodec(void);
+/// The codec used by WatchtowerScreenRecordingFlutterListener.
+NSObject<FlutterMessageCodec> *WatchtowerScreenRecordingFlutterListenerGetCodec(void);
 
-@interface WTPigeonFlutter : NSObject
+@interface WatchtowerScreenRecordingFlutterListener : NSObject
 - (instancetype)initWithBinaryMessenger:(id<FlutterBinaryMessenger>)binaryMessenger;
 - (void)takeScreenshot:(FlutterStandardTypedData *)frame completion:(void (^)(FlutterError *_Nullable))completion;
 @end

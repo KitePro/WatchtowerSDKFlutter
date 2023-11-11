@@ -2,18 +2,18 @@ import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
   dartOut: 'lib/src/watchtower_api.dart',
-  objcHeaderOut: 'ios/Classes/WTPigeon.h',
-  objcSourceOut: 'ios/Classes/WTPigeon.m',
+  objcHeaderOut: 'ios/Classes/WatchtowerPigeon.h',
+  objcSourceOut: 'ios/Classes/WatchtowerPigeon.m',
   dartPackageName: 'com.watchtower.plugin',
 ))
 @HostApi()
-abstract class WTPigeonHost {
+abstract class WatchtowerScreenRecordingApi {
   @ObjCSelector('startRecorder:')
   void startRecorder(int interval);
 }
 
 @FlutterApi()
-abstract class WTPigeonFlutter {
+abstract class WatchtowerScreenRecordingFlutterListener {
   @ObjCSelector('takeScreenshot:')
   void takeScreenshot(Uint8List frame);
 }

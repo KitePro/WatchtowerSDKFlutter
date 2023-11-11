@@ -1,27 +1,42 @@
-#import "WTImplementation.h"
+#import "WatchtowerSessionRecording.h"
 #import "WatchtowerPlugin.h"
 #import <Flutter/Flutter.h>
 
-@implementation WTImplementation
+@interface WatchtowerSessionRecording()
+@property (nonatomic, assign) BOOL isForeground;
+@end
+
+@implementation WatchtowerSessionRecording
 
 - (void)startRec:(NSInteger) interval{
     NSTimeInterval timeInterval = (NSTimeInterval) interval / 1000.0;
     UIApplication *app = [UIApplication sharedApplication];
     UIViewController *rootController = app.delegate.window.rootViewController;
+    self.isForeground = [self checkAppState];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while (true) {
-            UIImage *screenshot = [self takeScreenshot: rootController.view];
-            UIImage *compressedScreenshot = [self СompressScreenshot: screenshot];
-            
-            //NSData *imageData = UIImageJPEGRepresentation(compressedScreenshot, 0.5);
-            NSData *imageData = UIImagePNGRepresentation(compressedScreenshot);
-           
-            FlutterStandardTypedData *typedData = [FlutterStandardTypedData typedDataWithBytes:imageData];
-            [wTPigeonFlutter takeScreenshot:typedData completion:^(FlutterError * _Nullable null) {
-            }];
+            if(self.isForeground){
+                UIImage *screenshot = [self takeScreenshot: rootController.view];
+                UIImage *compressedScreenshot = [self СompressScreenshot: screenshot];
+                
+                //NSData *imageData = UIImageJPEGRepresentation(compressedScreenshot, 0.5);
+                NSData *imageData = UIImagePNGRepresentation(compressedScreenshot);
+               
+                FlutterStandardTypedData *typedData = [FlutterStandardTypedData typedDataWithBytes:imageData];
+                [screenRecordingFlutterListener takeScreenshot:typedData completion:^(FlutterError * _Nullable null) {
+                }];
+            }
             [NSThread sleepForTimeInterval:timeInterval];
         }
     });
+}
+
+- (BOOL)checkAppState{
+    UIApplication *app = [UIApplication sharedApplication];
+    if(app.applicationState == UIApplicationStateActive){
+        return YES;
+    }
+    return NO;
 }
 
 - (UIImage *)takeScreenshot:(UIView *)view {
@@ -33,15 +48,6 @@
 
     return screenshot;
 }
-
-/*- (UIImage *)takeScreenshot:(UIView *)view {
-    CGFloat scale = UIScreen.mainScreen.scale;
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, scale);
-    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
-    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return screenshot;
-}*/
 
 - (UIImage *) СompressScreenshot:(UIImage *) screenshotOriginal {
     CGFloat sizeRatio = screenshotOriginal.size.width / screenshotOriginal.size.height;
@@ -67,7 +73,17 @@
 }
 
 - (void)startRecorder:(NSInteger)interval error:(FlutterError * _Nullable __autoreleasing * _Nonnull)error {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackgroud) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self startRec: interval];
+}
+
+- (void)applicationDidEnterBackgroud{
+    self.isForeground = NO;
+}
+
+- (void)applicationWillEnterForeground{
+    self.isForeground = YES;
 }
 
 @end
