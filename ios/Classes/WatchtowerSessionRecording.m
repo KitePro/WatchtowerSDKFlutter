@@ -16,15 +16,17 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while (true) {
             if(self.isForeground){
-                UIImage *screenshot = [self takeScreenshot: rootController.view];
-                UIImage *compressedScreenshot = [self СompressScreenshot: screenshot];
-                
-                //NSData *imageData = UIImageJPEGRepresentation(compressedScreenshot, 0.5);
-                NSData *imageData = UIImagePNGRepresentation(compressedScreenshot);
-               
-                FlutterStandardTypedData *typedData = [FlutterStandardTypedData typedDataWithBytes:imageData];
-                [screenRecordingFlutterListener takeScreenshot:typedData completion:^(FlutterError * _Nullable null) {
-                }];
+                @autoreleasepool {
+                    UIImage *screenshot = [self takeScreenshot: rootController.view];
+                    UIImage *compressedScreenshot = [self СompressScreenshot: screenshot];
+                    
+                    //NSData *imageData = UIImageJPEGRepresentation(compressedScreenshot, 0.5);
+                    NSData *imageData = UIImagePNGRepresentation(compressedScreenshot);
+                   
+                    FlutterStandardTypedData *typedData = [FlutterStandardTypedData typedDataWithBytes:imageData];
+                    [screenRecordingFlutterListener takeScreenshot:typedData completion:^(FlutterError * _Nullable null) {
+                    }];
+                }
             }
             [NSThread sleepForTimeInterval:timeInterval];
         }
@@ -45,7 +47,6 @@
     [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:NO];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-
     return screenshot;
 }
 

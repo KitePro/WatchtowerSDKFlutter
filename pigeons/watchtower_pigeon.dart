@@ -2,6 +2,8 @@ import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
   dartOut: 'lib/src/watchtower_api.dart',
+  kotlinOut:
+      'android/src/main/kotlin/com/kitegroup/watchtower/pigeon/Pigeon.kt',
   objcHeaderOut: 'ios/Classes/WatchtowerPigeon.h',
   objcSourceOut: 'ios/Classes/WatchtowerPigeon.m',
   dartPackageName: 'com.watchtower.plugin',

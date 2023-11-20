@@ -31,9 +31,10 @@ class _KWebViewState extends State<KWebView> {
               onLoadStart: (controller, url) {
                 setState(() {});
               },
-              onProgressChanged: (controller, progress) {},
+              onProgressChanged: (controller, progress) async {},
               onLoadError: (controller, url, code, message) {},
               onLoadHttpError: (controller, url, code, message) {},
+              onLoadStop: (controller, url) {},
             ),
           ],
         ),

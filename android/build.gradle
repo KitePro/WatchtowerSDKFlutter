@@ -1,0 +1,51 @@
+group 'com.kitegroup.watchtower_plugin'
+version '0.1.0'
+
+buildscript {
+    ext.kotlin_version = '1.7.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.karumi:shot:5.14.1'
+    }
+}
+
+
+
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven{
+            url 'https://sdk.uxcam.com/android/'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    defaultConfig {
+        minSdkVersion 21
+    }
+    compileOptions {
+        sourceCompatibility kotlin_version
+        targetCompatibility kotlin_version
+    }
+    compileSdk 34
+
+
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+}

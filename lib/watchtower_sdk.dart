@@ -4,7 +4,6 @@ library watchtower_sdk;
 import 'dart:typed_data';
 
 // Flutter imports:
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Package imports:
@@ -51,16 +50,14 @@ class Watchtower {
   static Future<void> init({
     required String appId,
     required String appKey,
-    GlobalKey? repaintBoundary,
     String host = 'watchtower.cyou',
     int port = 8008,
     bool enableSessionRecorder = false,
     bool useTls = true,
-    int sessionRecordIntervalInMs = 500,
+    int sessionRecordIntervalInMs = 300,
   }) async {
     validateWatchtowerParams(
         enableSessionRecorder: enableSessionRecorder,
-        repaintBoundary: repaintBoundary,
         sessionRecordIntervalInMs: sessionRecordIntervalInMs);
     await getDeviceInfo();
 
@@ -109,34 +106,26 @@ class Watchtower {
     await _processLocaleStoreSavedEvents();
 
     isSessionRecorderEnabeled = enableSessionRecorder;
-    if (repaintBoundary != null && enableSessionRecorder) {
-      _initSessionrecorder(repaintBoundary, sessionRecordIntervalInMs);
+    if (enableSessionRecorder) {
+      _initSessionrecorder(sessionRecordIntervalInMs);
     }
   }
 
   static void validateWatchtowerParams(
-      {bool? enableSessionRecorder,
-      GlobalKey? repaintBoundary,
-      int? sessionRecordIntervalInMs}) {
-    if (enableSessionRecorder != null && enableSessionRecorder) {
-      assert(repaintBoundary != null);
-    }
-
+      {bool? enableSessionRecorder, int? sessionRecordIntervalInMs}) {
     if (sessionRecordIntervalInMs != null) {
       assert(sessionRecordIntervalInMs >= 100,
           "Session record interval should be greater or equal to 100 ms");
       assert(sessionRecordIntervalInMs <= 10000,
           "Session record interval should be less or equal to 10000 ms");
-      assert(repaintBoundary != null);
     }
   }
 
   static Future<void> _initSessionrecorder(
-      GlobalKey repaintBoundary, int sessionRecordIntervalInMs) async {
+      int sessionRecordIntervalInMs) async {
     logger.d("Init sessions recorder");
     sessionRecoreder.init(
         sessionId: sessionId,
-        repaintBoundary: repaintBoundary,
         pixelRatio: 1.0,
         interval: sessionRecordIntervalInMs);
 

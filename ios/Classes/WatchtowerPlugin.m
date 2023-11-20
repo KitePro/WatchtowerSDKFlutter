@@ -8,7 +8,6 @@ WatchtowerScreenRecordingFlutterListener *screenRecordingFlutterListener;
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar
 {
     SetUpWatchtowerScreenRecordingApi(registrar.messenger,  [[WatchtowerSessionRecording alloc] init]);
-    
     screenRecordingFlutterListener = [[WatchtowerScreenRecordingFlutterListener alloc] initWithBinaryMessenger:registrar.messenger];
 }
 
