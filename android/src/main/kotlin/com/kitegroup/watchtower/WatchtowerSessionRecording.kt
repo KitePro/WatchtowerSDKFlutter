@@ -1,7 +1,6 @@
 package com.kitegroup.watchtower
 
 import WatchtowerScreenRecordingApi
-import android.annotation.TargetApi
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Build
@@ -19,7 +18,8 @@ import java.io.ByteArrayOutputStream
 import io.flutter.embedding.android.FlutterSurfaceView
 
 
-class WatchtowerSessionRecording : WatchtowerScreenRecordingApi {
+class WatchtowerSessionRecording : WatchtowerScreenRecordingApi{
+
     override fun startRecorder(interval: Long) {
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
@@ -29,7 +29,6 @@ class WatchtowerSessionRecording : WatchtowerScreenRecordingApi {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
     private fun takeScreenshot() {
         if (WatchtowerPlugin.activity == null) return
 
