@@ -50,6 +50,7 @@ class SessionRecorder {
 class ScreenRecorderListener extends WatchtowerScreenRecordingFlutterListener {
   @override
   void takeScreenshot(Uint8List frame) {
+    print(frame.length);
     if (SessionRecorder.isSendToWatchtowerEnabled) {
       // Send frame to GRPC stream
       SessionRecorder.screenshotStreamController.add(frame);

@@ -6,8 +6,8 @@ import android.graphics.Canvas
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.PixelCopy
+import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.coroutines.CoroutineScope
@@ -15,12 +15,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import io.flutter.embedding.android.FlutterSurfaceView
 
 
 class WatchtowerSessionRecording : WatchtowerScreenRecordingApi{
 
     override fun startRecorder(interval: Long) {
+
         CoroutineScope(Dispatchers.Default).launch {
             while (true) {
                 takeScreenshot()
@@ -29,63 +29,58 @@ class WatchtowerSessionRecording : WatchtowerScreenRecordingApi{
         }
     }
 
-    private fun takeScreenshot() {
-        if (WatchtowerPlugin.activity == null) return
+    private fun takeScreenshot(){
 
+        val activity = ScreenRec.currentActivity ?: return
 
-        try {
-            val activity = WatchtowerPlugin.activity!!
-            val window = activity.window
-            val view = window.decorView.rootView
-            val scale = view.width.toFloat() / view.height.toFloat()
-            val resolution = 640
-            val height = resolution
-            val width = (resolution * scale).toInt()
-            var bitmap : Bitmap
-            val flutterSurfaceView = getFlutterSurfaceView(view)
+        val window = activity.window
+        val view = window.decorView.rootView
 
-            if(flutterSurfaceView == null) return
+        val surfaceView = getSurfaceView(view) ?: return
 
-            val surface = flutterSurfaceView.holder.surface
+        val surface = surfaceView.holder.surface
 
-            if(!surface.isValid) return
+        if(!surface.isValid) return
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-                PixelCopy.request(
-                    flutterSurfaceView,
-                    bitmap,
-                    { copyResult ->
-                        if (copyResult == PixelCopy.SUCCESS) {
-                            val stream = ByteArrayOutputStream()
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 10, stream)
-                            WatchtowerPlugin.screenRecordingFlutterListener.takeScreenshot(stream.toByteArray()) {}
-                        }
-                        bitmap.recycle()
-                    },
-                    Handler(Looper.getMainLooper())
-                )
-            }
-            else{
-                bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
-                val canvas = Canvas(bitmap)
-                view.draw(canvas)
-                canvas.setBitmap(null)
-                val stream = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.PNG, 10, stream)
-                WatchtowerPlugin.screenRecordingFlutterListener.takeScreenshot(stream.toByteArray()) {}
-            }
-        } catch (e: Exception) {
-            Log.e("Take screenshot", e.toString())
+        var bitmap : Bitmap
+        val scale = view.width.toFloat() / view.height.toFloat()
+        val resolution = 640
+        val height = resolution
+        val width = (resolution * scale).toInt()
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            PixelCopy.request(
+                surfaceView,
+                bitmap,
+                { copyResult ->
+                    if (copyResult == PixelCopy.SUCCESS) {
+                        val stream = ByteArrayOutputStream()
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 10, stream)
+                        WatchtowerPlugin.screenRecordingFlutterListener.takeScreenshot(stream.toByteArray()) {}
+                    }
+                    bitmap.recycle()
+                },
+                Handler(Looper.getMainLooper())
+            )
+        }
+        else{
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            val canvas = Canvas(bitmap)
+            view.draw(canvas)
+            canvas.setBitmap(null)
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 10, stream)
+            WatchtowerPlugin.screenRecordingFlutterListener.takeScreenshot(stream.toByteArray()) {}
         }
     }
 
-    private fun getFlutterSurfaceView(view: View): FlutterSurfaceView?{
-        var flutterSurfaceView: FlutterSurfaceView? = null
+    private fun getSurfaceView(view: View): SurfaceView?{
+        var surfaceView: SurfaceView? = null
         traverseView(view) {
-            v -> if(v is FlutterSurfaceView) flutterSurfaceView = v
+                v -> if(v is SurfaceView) surfaceView = v
         }
-        return flutterSurfaceView
+        return surfaceView
     }
 
     private fun traverseView(view: View, callback: (View) -> Unit){
