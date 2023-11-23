@@ -1,13 +1,9 @@
-//
+///
 //  Generated code. Do not modify.
 //  source: proto/application.proto
 //
 // @dart = 2.12
-
-// ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -16,6 +12,16 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import '../google/protobuf/timestamp.pb.dart' as $2;
 
 class Application extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Application', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appBundle')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appKey')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appVersion')
+    ..aOM<$2.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdTimestamp', subBuilder: $2.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  Application._() : super();
   factory Application({
     $core.String? appId,
     $core.String? appBundle,
@@ -23,37 +29,26 @@ class Application extends $pb.GeneratedMessage {
     $core.String? appVersion,
     $2.Timestamp? createdTimestamp,
   }) {
-    final $result = create();
+    final _result = create();
     if (appId != null) {
-      $result.appId = appId;
+      _result.appId = appId;
     }
     if (appBundle != null) {
-      $result.appBundle = appBundle;
+      _result.appBundle = appBundle;
     }
     if (appKey != null) {
-      $result.appKey = appKey;
+      _result.appKey = appKey;
     }
     if (appVersion != null) {
-      $result.appVersion = appVersion;
+      _result.appVersion = appVersion;
     }
     if (createdTimestamp != null) {
-      $result.createdTimestamp = createdTimestamp;
+      _result.createdTimestamp = createdTimestamp;
     }
-    return $result;
+    return _result;
   }
-  Application._() : super();
   factory Application.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Application.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Application', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'appId')
-    ..aOS(2, _omitFieldNames ? '' : 'appBundle')
-    ..aOS(3, _omitFieldNames ? '' : 'appKey')
-    ..aOS(4, _omitFieldNames ? '' : 'appVersion')
-    ..aOM<$2.Timestamp>(5, _omitFieldNames ? '' : 'createdTimestamp', subBuilder: $2.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -63,10 +58,8 @@ class Application extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Application copyWith(void Function(Application) updates) => super.copyWith((message) => updates(message as Application)) as Application;
-
+  Application copyWith(void Function(Application) updates) => super.copyWith((message) => updates(message as Application)) as Application; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static Application create() => Application._();
   Application createEmptyInstance() => create();
@@ -123,6 +116,3 @@ class Application extends $pb.GeneratedMessage {
   $2.Timestamp ensureCreatedTimestamp() => $_ensure(4);
 }
 
-
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

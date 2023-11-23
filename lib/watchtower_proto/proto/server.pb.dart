@@ -1,13 +1,9 @@
-//
+///
 //  Generated code. Do not modify.
 //  source: proto/server.proto
 //
 // @dart = 2.12
-
-// ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -16,15 +12,14 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'event.pb.dart' as $4;
 
 class PingRequest extends $pb.GeneratedMessage {
-  factory PingRequest() => create();
-  PingRequest._() : super();
-  factory PingRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PingRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PingRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PingRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
+  PingRequest._() : super();
+  factory PingRequest() => create();
+  factory PingRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PingRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -34,10 +29,8 @@ class PingRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PingRequest copyWith(void Function(PingRequest) updates) => super.copyWith((message) => updates(message as PingRequest)) as PingRequest;
-
+  PingRequest copyWith(void Function(PingRequest) updates) => super.copyWith((message) => updates(message as PingRequest)) as PingRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PingRequest create() => PingRequest._();
   PingRequest createEmptyInstance() => create();
@@ -48,15 +41,14 @@ class PingRequest extends $pb.GeneratedMessage {
 }
 
 class PingResponse extends $pb.GeneratedMessage {
-  factory PingResponse() => create();
-  PingResponse._() : super();
-  factory PingResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PingResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PingResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PingResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
+  PingResponse._() : super();
+  factory PingResponse() => create();
+  factory PingResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PingResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -66,10 +58,8 @@ class PingResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PingResponse copyWith(void Function(PingResponse) updates) => super.copyWith((message) => updates(message as PingResponse)) as PingResponse;
-
+  PingResponse copyWith(void Function(PingResponse) updates) => super.copyWith((message) => updates(message as PingResponse)) as PingResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PingResponse create() => PingResponse._();
   PingResponse createEmptyInstance() => create();
@@ -80,24 +70,23 @@ class PingResponse extends $pb.GeneratedMessage {
 }
 
 class PostEventRequst extends $pb.GeneratedMessage {
-  factory PostEventRequst({
-    $4.Event? event,
-  }) {
-    final $result = create();
-    if (event != null) {
-      $result.event = event;
-    }
-    return $result;
-  }
-  PostEventRequst._() : super();
-  factory PostEventRequst.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PostEventRequst.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PostEventRequst', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOM<$4.Event>(1, _omitFieldNames ? '' : 'event', subBuilder: $4.Event.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PostEventRequst', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOM<$4.Event>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'event', subBuilder: $4.Event.create)
     ..hasRequiredFields = false
   ;
 
+  PostEventRequst._() : super();
+  factory PostEventRequst({
+    $4.Event? event,
+  }) {
+    final _result = create();
+    if (event != null) {
+      _result.event = event;
+    }
+    return _result;
+  }
+  factory PostEventRequst.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PostEventRequst.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -107,10 +96,8 @@ class PostEventRequst extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PostEventRequst copyWith(void Function(PostEventRequst) updates) => super.copyWith((message) => updates(message as PostEventRequst)) as PostEventRequst;
-
+  PostEventRequst copyWith(void Function(PostEventRequst) updates) => super.copyWith((message) => updates(message as PostEventRequst)) as PostEventRequst; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PostEventRequst create() => PostEventRequst._();
   PostEventRequst createEmptyInstance() => create();
@@ -132,15 +119,14 @@ class PostEventRequst extends $pb.GeneratedMessage {
 }
 
 class PostEventResponse extends $pb.GeneratedMessage {
-  factory PostEventResponse() => create();
-  PostEventResponse._() : super();
-  factory PostEventResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PostEventResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PostEventResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PostEventResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
+  PostEventResponse._() : super();
+  factory PostEventResponse() => create();
+  factory PostEventResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PostEventResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -150,10 +136,8 @@ class PostEventResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PostEventResponse copyWith(void Function(PostEventResponse) updates) => super.copyWith((message) => updates(message as PostEventResponse)) as PostEventResponse;
-
+  PostEventResponse copyWith(void Function(PostEventResponse) updates) => super.copyWith((message) => updates(message as PostEventResponse)) as PostEventResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PostEventResponse create() => PostEventResponse._();
   PostEventResponse createEmptyInstance() => create();
@@ -164,24 +148,23 @@ class PostEventResponse extends $pb.GeneratedMessage {
 }
 
 class PostBatchEventRequst extends $pb.GeneratedMessage {
-  factory PostBatchEventRequst({
-    $4.BatchEvent? batchEvent,
-  }) {
-    final $result = create();
-    if (batchEvent != null) {
-      $result.batchEvent = batchEvent;
-    }
-    return $result;
-  }
-  PostBatchEventRequst._() : super();
-  factory PostBatchEventRequst.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PostBatchEventRequst.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PostBatchEventRequst', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOM<$4.BatchEvent>(1, _omitFieldNames ? '' : 'batchEvent', protoName: 'batchEvent', subBuilder: $4.BatchEvent.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PostBatchEventRequst', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOM<$4.BatchEvent>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'batchEvent', protoName: 'batchEvent', subBuilder: $4.BatchEvent.create)
     ..hasRequiredFields = false
   ;
 
+  PostBatchEventRequst._() : super();
+  factory PostBatchEventRequst({
+    $4.BatchEvent? batchEvent,
+  }) {
+    final _result = create();
+    if (batchEvent != null) {
+      _result.batchEvent = batchEvent;
+    }
+    return _result;
+  }
+  factory PostBatchEventRequst.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PostBatchEventRequst.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -191,10 +174,8 @@ class PostBatchEventRequst extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PostBatchEventRequst copyWith(void Function(PostBatchEventRequst) updates) => super.copyWith((message) => updates(message as PostBatchEventRequst)) as PostBatchEventRequst;
-
+  PostBatchEventRequst copyWith(void Function(PostBatchEventRequst) updates) => super.copyWith((message) => updates(message as PostBatchEventRequst)) as PostBatchEventRequst; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PostBatchEventRequst create() => PostBatchEventRequst._();
   PostBatchEventRequst createEmptyInstance() => create();
@@ -216,15 +197,14 @@ class PostBatchEventRequst extends $pb.GeneratedMessage {
 }
 
 class PostBatchEventResponse extends $pb.GeneratedMessage {
-  factory PostBatchEventResponse() => create();
-  PostBatchEventResponse._() : super();
-  factory PostBatchEventResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PostBatchEventResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PostBatchEventResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PostBatchEventResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
+  PostBatchEventResponse._() : super();
+  factory PostBatchEventResponse() => create();
+  factory PostBatchEventResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PostBatchEventResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -234,10 +214,8 @@ class PostBatchEventResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PostBatchEventResponse copyWith(void Function(PostBatchEventResponse) updates) => super.copyWith((message) => updates(message as PostBatchEventResponse)) as PostBatchEventResponse;
-
+  PostBatchEventResponse copyWith(void Function(PostBatchEventResponse) updates) => super.copyWith((message) => updates(message as PostBatchEventResponse)) as PostBatchEventResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static PostBatchEventResponse create() => PostBatchEventResponse._();
   PostBatchEventResponse createEmptyInstance() => create();
@@ -247,6 +225,3 @@ class PostBatchEventResponse extends $pb.GeneratedMessage {
   static PostBatchEventResponse? _defaultInstance;
 }
 
-
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -1,42 +1,37 @@
-//
+///
 //  Generated code. Do not modify.
 //  source: proto/session_record_done.proto
 //
 // @dart = 2.12
-
-// ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class SessionRecordDone extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SessionRecordDone', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sessionRecordPath')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bucketName')
+    ..hasRequiredFields = false
+  ;
+
+  SessionRecordDone._() : super();
   factory SessionRecordDone({
     $core.String? sessionRecordPath,
     $core.String? bucketName,
   }) {
-    final $result = create();
+    final _result = create();
     if (sessionRecordPath != null) {
-      $result.sessionRecordPath = sessionRecordPath;
+      _result.sessionRecordPath = sessionRecordPath;
     }
     if (bucketName != null) {
-      $result.bucketName = bucketName;
+      _result.bucketName = bucketName;
     }
-    return $result;
+    return _result;
   }
-  SessionRecordDone._() : super();
   factory SessionRecordDone.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SessionRecordDone.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SessionRecordDone', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'sessionRecordPath')
-    ..aOS(2, _omitFieldNames ? '' : 'bucketName')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -46,10 +41,8 @@ class SessionRecordDone extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SessionRecordDone copyWith(void Function(SessionRecordDone) updates) => super.copyWith((message) => updates(message as SessionRecordDone)) as SessionRecordDone;
-
+  SessionRecordDone copyWith(void Function(SessionRecordDone) updates) => super.copyWith((message) => updates(message as SessionRecordDone)) as SessionRecordDone; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static SessionRecordDone create() => SessionRecordDone._();
   SessionRecordDone createEmptyInstance() => create();
@@ -77,6 +70,3 @@ class SessionRecordDone extends $pb.GeneratedMessage {
   void clearBucketName() => clearField(2);
 }
 
-
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

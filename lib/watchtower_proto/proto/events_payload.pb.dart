@@ -1,24 +1,35 @@
-//
+///
 //  Generated code. Do not modify.
 //  source: proto/events_payload.proto
 //
 // @dart = 2.12
-
-// ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../google/protobuf/timestamp.pb.dart' as $2;
+
 import 'events_payload.pbenum.dart';
 
 export 'events_payload.pbenum.dart';
 
 class AppStartPayload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AppStartPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOM<$2.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appStartTimestamp', subBuilder: $2.Timestamp.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'locale')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'osName')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceModel')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gaid')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'idfa')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'oaid')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fcmToken')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hmsToken')
+    ..hasRequiredFields = false
+  ;
+
+  AppStartPayload._() : super();
   factory AppStartPayload({
     $2.Timestamp? appStartTimestamp,
     $core.String? locale,
@@ -30,53 +41,38 @@ class AppStartPayload extends $pb.GeneratedMessage {
     $core.String? fcmToken,
     $core.String? hmsToken,
   }) {
-    final $result = create();
+    final _result = create();
     if (appStartTimestamp != null) {
-      $result.appStartTimestamp = appStartTimestamp;
+      _result.appStartTimestamp = appStartTimestamp;
     }
     if (locale != null) {
-      $result.locale = locale;
+      _result.locale = locale;
     }
     if (osName != null) {
-      $result.osName = osName;
+      _result.osName = osName;
     }
     if (deviceModel != null) {
-      $result.deviceModel = deviceModel;
+      _result.deviceModel = deviceModel;
     }
     if (gaid != null) {
-      $result.gaid = gaid;
+      _result.gaid = gaid;
     }
     if (idfa != null) {
-      $result.idfa = idfa;
+      _result.idfa = idfa;
     }
     if (oaid != null) {
-      $result.oaid = oaid;
+      _result.oaid = oaid;
     }
     if (fcmToken != null) {
-      $result.fcmToken = fcmToken;
+      _result.fcmToken = fcmToken;
     }
     if (hmsToken != null) {
-      $result.hmsToken = hmsToken;
+      _result.hmsToken = hmsToken;
     }
-    return $result;
+    return _result;
   }
-  AppStartPayload._() : super();
   factory AppStartPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory AppStartPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AppStartPayload', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOM<$2.Timestamp>(1, _omitFieldNames ? '' : 'appStartTimestamp', subBuilder: $2.Timestamp.create)
-    ..aOS(2, _omitFieldNames ? '' : 'locale')
-    ..aOS(3, _omitFieldNames ? '' : 'osName')
-    ..aOS(4, _omitFieldNames ? '' : 'deviceModel')
-    ..aOS(5, _omitFieldNames ? '' : 'gaid')
-    ..aOS(6, _omitFieldNames ? '' : 'idfa')
-    ..aOS(7, _omitFieldNames ? '' : 'oaid')
-    ..aOS(8, _omitFieldNames ? '' : 'fcmToken')
-    ..aOS(9, _omitFieldNames ? '' : 'hmsToken')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -86,10 +82,8 @@ class AppStartPayload extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  AppStartPayload copyWith(void Function(AppStartPayload) updates) => super.copyWith((message) => updates(message as AppStartPayload)) as AppStartPayload;
-
+  AppStartPayload copyWith(void Function(AppStartPayload) updates) => super.copyWith((message) => updates(message as AppStartPayload)) as AppStartPayload; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static AppStartPayload create() => AppStartPayload._();
   AppStartPayload createEmptyInstance() => create();
@@ -183,29 +177,28 @@ class AppStartPayload extends $pb.GeneratedMessage {
 }
 
 class CustomPayload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CustomPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..hasRequiredFields = false
+  ;
+
+  CustomPayload._() : super();
   factory CustomPayload({
     $core.String? data,
     $core.String? name,
   }) {
-    final $result = create();
+    final _result = create();
     if (data != null) {
-      $result.data = data;
+      _result.data = data;
     }
     if (name != null) {
-      $result.name = name;
+      _result.name = name;
     }
-    return $result;
+    return _result;
   }
-  CustomPayload._() : super();
   factory CustomPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CustomPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CustomPayload', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'data')
-    ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -215,10 +208,8 @@ class CustomPayload extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CustomPayload copyWith(void Function(CustomPayload) updates) => super.copyWith((message) => updates(message as CustomPayload)) as CustomPayload;
-
+  CustomPayload copyWith(void Function(CustomPayload) updates) => super.copyWith((message) => updates(message as CustomPayload)) as CustomPayload; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static CustomPayload create() => CustomPayload._();
   CustomPayload createEmptyInstance() => create();
@@ -247,34 +238,33 @@ class CustomPayload extends $pb.GeneratedMessage {
 }
 
 class LogPayload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LogPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..e<LogPayload_LOG_LEVEL>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'level', $pb.PbFieldType.OE, defaultOrMaker: LogPayload_LOG_LEVEL.UNKNOWN, valueOf: LogPayload_LOG_LEVEL.valueOf, enumValues: LogPayload_LOG_LEVEL.values)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'moduleName')
+    ..hasRequiredFields = false
+  ;
+
+  LogPayload._() : super();
   factory LogPayload({
     LogPayload_LOG_LEVEL? level,
     $core.String? message,
     $core.String? moduleName,
   }) {
-    final $result = create();
+    final _result = create();
     if (level != null) {
-      $result.level = level;
+      _result.level = level;
     }
     if (message != null) {
-      $result.message = message;
+      _result.message = message;
     }
     if (moduleName != null) {
-      $result.moduleName = moduleName;
+      _result.moduleName = moduleName;
     }
-    return $result;
+    return _result;
   }
-  LogPayload._() : super();
   factory LogPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LogPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'LogPayload', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..e<LogPayload_LOG_LEVEL>(1, _omitFieldNames ? '' : 'level', $pb.PbFieldType.OE, defaultOrMaker: LogPayload_LOG_LEVEL.UNKNOWN, valueOf: LogPayload_LOG_LEVEL.valueOf, enumValues: LogPayload_LOG_LEVEL.values)
-    ..aOS(2, _omitFieldNames ? '' : 'message')
-    ..aOS(3, _omitFieldNames ? '' : 'moduleName')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -284,10 +274,8 @@ class LogPayload extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  LogPayload copyWith(void Function(LogPayload) updates) => super.copyWith((message) => updates(message as LogPayload)) as LogPayload;
-
+  LogPayload copyWith(void Function(LogPayload) updates) => super.copyWith((message) => updates(message as LogPayload)) as LogPayload; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static LogPayload create() => LogPayload._();
   LogPayload createEmptyInstance() => create();
@@ -325,34 +313,33 @@ class LogPayload extends $pb.GeneratedMessage {
 }
 
 class OpenLinkPayload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OpenLinkPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uri')
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'responseCode', $pb.PbFieldType.O3)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'responseText')
+    ..hasRequiredFields = false
+  ;
+
+  OpenLinkPayload._() : super();
   factory OpenLinkPayload({
     $core.String? uri,
     $core.int? responseCode,
     $core.String? responseText,
   }) {
-    final $result = create();
+    final _result = create();
     if (uri != null) {
-      $result.uri = uri;
+      _result.uri = uri;
     }
     if (responseCode != null) {
-      $result.responseCode = responseCode;
+      _result.responseCode = responseCode;
     }
     if (responseText != null) {
-      $result.responseText = responseText;
+      _result.responseText = responseText;
     }
-    return $result;
+    return _result;
   }
-  OpenLinkPayload._() : super();
   factory OpenLinkPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OpenLinkPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OpenLinkPayload', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'uri')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'responseCode', $pb.PbFieldType.O3)
-    ..aOS(3, _omitFieldNames ? '' : 'responseText')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -362,10 +349,8 @@ class OpenLinkPayload extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OpenLinkPayload copyWith(void Function(OpenLinkPayload) updates) => super.copyWith((message) => updates(message as OpenLinkPayload)) as OpenLinkPayload;
-
+  OpenLinkPayload copyWith(void Function(OpenLinkPayload) updates) => super.copyWith((message) => updates(message as OpenLinkPayload)) as OpenLinkPayload; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static OpenLinkPayload create() => OpenLinkPayload._();
   OpenLinkPayload createEmptyInstance() => create();
@@ -402,6 +387,3 @@ class OpenLinkPayload extends $pb.GeneratedMessage {
   void clearResponseText() => clearField(3);
 }
 
-
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

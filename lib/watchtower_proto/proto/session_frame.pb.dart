@@ -1,25 +1,34 @@
-//
+///
 //  Generated code. Do not modify.
 //  source: proto/session_frame.proto
 //
 // @dart = 2.12
-
-// ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../google/protobuf/timestamp.pb.dart' as $2;
+
 import 'session_frame.pbenum.dart';
 
 export 'session_frame.pbenum.dart';
 
-/// Session record frame
 class SessionFrame extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SessionFrame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appBundle')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appKey')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sessionId')
+    ..aOM<$2.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
+    ..a<$core.List<$core.int>>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frame', $pb.PbFieldType.OY)
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameId')
+    ..hasRequiredFields = false
+  ;
+
+  SessionFrame._() : super();
   factory SessionFrame({
     $core.String? appId,
     $core.String? appBundle,
@@ -30,49 +39,35 @@ class SessionFrame extends $pb.GeneratedMessage {
     $core.List<$core.int>? frame,
     $core.String? frameId,
   }) {
-    final $result = create();
+    final _result = create();
     if (appId != null) {
-      $result.appId = appId;
+      _result.appId = appId;
     }
     if (appBundle != null) {
-      $result.appBundle = appBundle;
+      _result.appBundle = appBundle;
     }
     if (userId != null) {
-      $result.userId = userId;
+      _result.userId = userId;
     }
     if (appKey != null) {
-      $result.appKey = appKey;
+      _result.appKey = appKey;
     }
     if (sessionId != null) {
-      $result.sessionId = sessionId;
+      _result.sessionId = sessionId;
     }
     if (frameTimestamp != null) {
-      $result.frameTimestamp = frameTimestamp;
+      _result.frameTimestamp = frameTimestamp;
     }
     if (frame != null) {
-      $result.frame = frame;
+      _result.frame = frame;
     }
     if (frameId != null) {
-      $result.frameId = frameId;
+      _result.frameId = frameId;
     }
-    return $result;
+    return _result;
   }
-  SessionFrame._() : super();
   factory SessionFrame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SessionFrame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SessionFrame', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'appId')
-    ..aOS(2, _omitFieldNames ? '' : 'appBundle')
-    ..aOS(3, _omitFieldNames ? '' : 'userId')
-    ..aOS(4, _omitFieldNames ? '' : 'appKey')
-    ..aOS(5, _omitFieldNames ? '' : 'sessionId')
-    ..aOM<$2.Timestamp>(6, _omitFieldNames ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
-    ..a<$core.List<$core.int>>(7, _omitFieldNames ? '' : 'frame', $pb.PbFieldType.OY)
-    ..aOS(8, _omitFieldNames ? '' : 'frameId')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -82,10 +77,8 @@ class SessionFrame extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SessionFrame copyWith(void Function(SessionFrame) updates) => super.copyWith((message) => updates(message as SessionFrame)) as SessionFrame;
-
+  SessionFrame copyWith(void Function(SessionFrame) updates) => super.copyWith((message) => updates(message as SessionFrame)) as SessionFrame; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static SessionFrame create() => SessionFrame._();
   SessionFrame createEmptyInstance() => create();
@@ -170,6 +163,20 @@ class SessionFrame extends $pb.GeneratedMessage {
 }
 
 class SessionFrameExtended extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SessionFrameExtended', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appBundle')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'appKey')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sessionId')
+    ..aOM<$2.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
+    ..a<$core.List<$core.int>>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frame', $pb.PbFieldType.OY)
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameId')
+    ..e<SessionFrameExtended_FRAME_FORMAT>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: SessionFrameExtended_FRAME_FORMAT.UNKNOWN, valueOf: SessionFrameExtended_FRAME_FORMAT.valueOf, enumValues: SessionFrameExtended_FRAME_FORMAT.values)
+    ..hasRequiredFields = false
+  ;
+
+  SessionFrameExtended._() : super();
   factory SessionFrameExtended({
     $core.String? appId,
     $core.String? appBundle,
@@ -181,53 +188,38 @@ class SessionFrameExtended extends $pb.GeneratedMessage {
     $core.String? frameId,
     SessionFrameExtended_FRAME_FORMAT? format,
   }) {
-    final $result = create();
+    final _result = create();
     if (appId != null) {
-      $result.appId = appId;
+      _result.appId = appId;
     }
     if (appBundle != null) {
-      $result.appBundle = appBundle;
+      _result.appBundle = appBundle;
     }
     if (userId != null) {
-      $result.userId = userId;
+      _result.userId = userId;
     }
     if (appKey != null) {
-      $result.appKey = appKey;
+      _result.appKey = appKey;
     }
     if (sessionId != null) {
-      $result.sessionId = sessionId;
+      _result.sessionId = sessionId;
     }
     if (frameTimestamp != null) {
-      $result.frameTimestamp = frameTimestamp;
+      _result.frameTimestamp = frameTimestamp;
     }
     if (frame != null) {
-      $result.frame = frame;
+      _result.frame = frame;
     }
     if (frameId != null) {
-      $result.frameId = frameId;
+      _result.frameId = frameId;
     }
     if (format != null) {
-      $result.format = format;
+      _result.format = format;
     }
-    return $result;
+    return _result;
   }
-  SessionFrameExtended._() : super();
   factory SessionFrameExtended.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SessionFrameExtended.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SessionFrameExtended', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'appId')
-    ..aOS(2, _omitFieldNames ? '' : 'appBundle')
-    ..aOS(3, _omitFieldNames ? '' : 'userId')
-    ..aOS(4, _omitFieldNames ? '' : 'appKey')
-    ..aOS(5, _omitFieldNames ? '' : 'sessionId')
-    ..aOM<$2.Timestamp>(6, _omitFieldNames ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
-    ..a<$core.List<$core.int>>(7, _omitFieldNames ? '' : 'frame', $pb.PbFieldType.OY)
-    ..aOS(8, _omitFieldNames ? '' : 'frameId')
-    ..e<SessionFrameExtended_FRAME_FORMAT>(9, _omitFieldNames ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: SessionFrameExtended_FRAME_FORMAT.UNKNOWN, valueOf: SessionFrameExtended_FRAME_FORMAT.valueOf, enumValues: SessionFrameExtended_FRAME_FORMAT.values)
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -237,10 +229,8 @@ class SessionFrameExtended extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SessionFrameExtended copyWith(void Function(SessionFrameExtended) updates) => super.copyWith((message) => updates(message as SessionFrameExtended)) as SessionFrameExtended;
-
+  SessionFrameExtended copyWith(void Function(SessionFrameExtended) updates) => super.copyWith((message) => updates(message as SessionFrameExtended)) as SessionFrameExtended; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static SessionFrameExtended create() => SessionFrameExtended._();
   SessionFrameExtended createEmptyInstance() => create();
@@ -333,8 +323,17 @@ class SessionFrameExtended extends $pb.GeneratedMessage {
   void clearFormat() => clearField(9);
 }
 
-/// Response from server on session frame receive
 class SessionFrameAcceptStatus extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SessionFrameAcceptStatus', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'watch_tower_proto'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
+    ..aOM<$2.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'frameId')
+    ..hasRequiredFields = false
+  ;
+
+  SessionFrameAcceptStatus._() : super();
   factory SessionFrameAcceptStatus({
     $core.String? userId,
     $2.Timestamp? frameTimestamp,
@@ -342,37 +341,26 @@ class SessionFrameAcceptStatus extends $pb.GeneratedMessage {
     $core.String? message,
     $core.String? frameId,
   }) {
-    final $result = create();
+    final _result = create();
     if (userId != null) {
-      $result.userId = userId;
+      _result.userId = userId;
     }
     if (frameTimestamp != null) {
-      $result.frameTimestamp = frameTimestamp;
+      _result.frameTimestamp = frameTimestamp;
     }
     if (status != null) {
-      $result.status = status;
+      _result.status = status;
     }
     if (message != null) {
-      $result.message = message;
+      _result.message = message;
     }
     if (frameId != null) {
-      $result.frameId = frameId;
+      _result.frameId = frameId;
     }
-    return $result;
+    return _result;
   }
-  SessionFrameAcceptStatus._() : super();
   factory SessionFrameAcceptStatus.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SessionFrameAcceptStatus.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SessionFrameAcceptStatus', package: const $pb.PackageName(_omitMessageNames ? '' : 'watch_tower_proto'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'userId')
-    ..aOM<$2.Timestamp>(2, _omitFieldNames ? '' : 'frameTimestamp', subBuilder: $2.Timestamp.create)
-    ..aOB(3, _omitFieldNames ? '' : 'status')
-    ..aOS(4, _omitFieldNames ? '' : 'message')
-    ..aOS(5, _omitFieldNames ? '' : 'frameId')
-    ..hasRequiredFields = false
-  ;
-
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -382,10 +370,8 @@ class SessionFrameAcceptStatus extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SessionFrameAcceptStatus copyWith(void Function(SessionFrameAcceptStatus) updates) => super.copyWith((message) => updates(message as SessionFrameAcceptStatus)) as SessionFrameAcceptStatus;
-
+  SessionFrameAcceptStatus copyWith(void Function(SessionFrameAcceptStatus) updates) => super.copyWith((message) => updates(message as SessionFrameAcceptStatus)) as SessionFrameAcceptStatus; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
-
   @$core.pragma('dart2js:noInline')
   static SessionFrameAcceptStatus create() => SessionFrameAcceptStatus._();
   SessionFrameAcceptStatus createEmptyInstance() => create();
@@ -442,6 +428,3 @@ class SessionFrameAcceptStatus extends $pb.GeneratedMessage {
   void clearFrameId() => clearField(5);
 }
 
-
-const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
