@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 // ==========================================================
 import 'package:watchtower_sdk/watchtower_sdk.dart';
 
-import 'package:watchtower_sdk_app/app_data_widget.dart';
-import 'package:watchtower_sdk_app/sdk_actions_widget.dart';
-import 'package:watchtower_sdk_app/user_data.dart';
-import 'package:watchtower_sdk_app/uri_events_widget.dart';
-import 'package:watchtower_sdk_app/custom_events_widget.dart';
-import 'package:watchtower_sdk_app/log_events_widget.dart';
-import 'package:watchtower_sdk_app/config.dart';
+import 'package:example/app_data_widget.dart';
+import 'package:example/sdk_actions_widget.dart';
+import 'package:example/user_data.dart';
+import 'package:example/uri_events_widget.dart';
+import 'package:example/custom_events_widget.dart';
+import 'package:example/log_events_widget.dart';
+import 'package:example/config.dart';
 import 'package:logger/logger.dart';
 
 import 'dart:typed_data';
@@ -62,8 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Watchtower.init(
       appId: appId,
       appKey: appKey,
-      repaintBoundary: repaintBoundary,
-      enableSessionRecorder: false,
+      // repaintBoundary: repaintBoundary,
+      // enableSessionRecorder: false,
     );
   }
 

@@ -1,3 +1,3 @@
-const appId = "app_id";
-const appKey = "3f3de5d05db9d16dba174ad322566687";
+const appId = "example.app";
+const appKey = "ae1ca4f5d61feecd7eda2928f4885000";
 const appVersion = "1.2.3";

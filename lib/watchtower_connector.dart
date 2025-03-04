@@ -5,7 +5,7 @@ import 'package:grpc/service_api.dart' as grpc_services_api;
 
 // Project imports:
 import 'package:watchtower_sdk/watchtower_logger.dart';
-import 'package:watchtower_sdk/watchtower_proto/proto/server.pbgrpc.dart';
+import 'package:watchtower_sdk/watchtower_proto/proto/watchtower_api.pbgrpc.dart';
 
 var logger = getLogger("watchtower_connector");
 
@@ -43,8 +43,7 @@ class WatchtowerConnector {
                 },
               )
             : const ChannelCredentials.insecure(),
-        codecRegistry:
-            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+        codecRegistry: CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
       ),
     );
     _monitorChannelState(channel);
@@ -62,8 +61,7 @@ class WatchtowerConnector {
   }
 
   WatchTowerApiClient _createStub(grpc_services_api.ClientChannel channel) {
-    return WatchTowerApiClient(channel,
-        options: CallOptions(timeout: const Duration(seconds: 30)));
+    return WatchTowerApiClient(channel, options: CallOptions(timeout: const Duration(seconds: 30)));
   }
 
   Future<void> _monitorChannelState(ClientChannel channel) async {

@@ -1,6 +1,6 @@
 {
-    "name": "watchtower_sdk_app",
-    "short_name": "watchtower_sdk_app",
+    "name": "example",
+    "short_name": "example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

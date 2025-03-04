@@ -8,7 +8,6 @@ import 'package:extended_shared_preferences/extended_shared_preferences.dart';
 import 'package:watchtower_sdk/models/user_app_data.dart';
 import 'package:watchtower_sdk/watchtower_logger.dart';
 import 'package:watchtower_sdk/watchtower_proto/proto/event.pb.dart';
-import 'package:watchtower_sdk/watchtower_proto/proto/session_frame.pb.dart';
 
 var logger = getLogger("store");
 
@@ -81,33 +80,33 @@ class DataStore {
     ExtendedSharedPreferences.prefs!.remove(evntsCacheKey);
   }
 
-  Future<void> saveSessionFrame({required String sessionId, required SessionFrame frame}) async {
-    logger.d("Save session frame to local cache");
-    String frmaeId = "$sessionRecordKey:$sessionId:${DateTime.now().millisecondsSinceEpoch}";
-    frame.frameId = frmaeId;
-    await ExtendedSharedPreferences.setStringWithTTLEncrypted(
-        key: frmaeId, value: frame.writeToJson(), ttl: const Duration(days: 1));
-  }
+  // Future<void> saveSessionFrame({required String sessionId, required SessionFrame frame}) async {
+  //   logger.d("Save session frame to local cache");
+  //   String frmaeId = "$sessionRecordKey:$sessionId:${DateTime.now().millisecondsSinceEpoch}";
+  //   frame.frameId = frmaeId;
+  //   await ExtendedSharedPreferences.setStringWithTTLEncrypted(
+  //       key: frmaeId, value: frame.writeToJson(), ttl: const Duration(days: 1));
+  // }
 
-  Future<SessionFrame?> getSessionFrameById(String frameId) async {
-    logger.d("Get session frame by Id: $frameId");
-    String? sessionRecord = await ExtendedSharedPreferences.getStringWithTTLEncrypted(key: frameId);
-    if (sessionRecord == null) {
-      return null;
-    }
-    return SessionFrame.fromJson(sessionRecord);
-  }
+  // Future<SessionFrame?> getSessionFrameById(String frameId) async {
+  //   logger.d("Get session frame by Id: $frameId");
+  //   String? sessionRecord = await ExtendedSharedPreferences.getStringWithTTLEncrypted(key: frameId);
+  //   if (sessionRecord == null) {
+  //     return null;
+  //   }
+  //   return SessionFrame.fromJson(sessionRecord);
+  // }
 
-  Stream<SessionFrame> getAllSessionsframes() async* {
-    logger.d("Get session frames from local cache");
-    Iterable<String>? sessionsFrames = ExtendedSharedPreferences.getKeysWithTTL(prefix: sessionRecordKey);
-    for (var frameId in sessionsFrames) {
-      SessionFrame? frame = await getSessionFrameById(frameId);
-      if (frame != null) {
-        yield frame;
-      }
-    }
-  }
+  // Stream<SessionFrame> getAllSessionsframes() async* {
+  //   logger.d("Get session frames from local cache");
+  //   Iterable<String>? sessionsFrames = ExtendedSharedPreferences.getKeysWithTTL(prefix: sessionRecordKey);
+  //   for (var frameId in sessionsFrames) {
+  //     SessionFrame? frame = await getSessionFrameById(frameId);
+  //     if (frame != null) {
+  //       yield frame;
+  //     }
+  //   }
+  // }
 
   Future<void> clearAllSessionsFrames() async {
     logger.d("Clear all sessions records");
